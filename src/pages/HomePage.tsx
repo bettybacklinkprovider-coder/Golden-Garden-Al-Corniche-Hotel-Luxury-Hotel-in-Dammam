@@ -359,24 +359,56 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, onOpenBooking
             </p>
           </div>
 
-          {/* Facilities Grid */}
+          {/* Facilities Grid with Images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {FACILITIES_DATA.map((fac) => (
               <div
                 key={fac.id}
-                className="p-6 bg-stone-950/80 rounded-2xl border border-stone-800 hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-1 space-y-3"
+                onClick={() => setSelectedGalleryImg(fac.image)}
+                className="group cursor-pointer bg-stone-950 rounded-2xl border border-stone-800 hover:border-amber-500/50 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-orange-600/15 flex items-center justify-center border border-orange-500/25">
-                  {getFacilityIcon(fac.iconName)}
+                <div>
+                  {/* Image Header with Scrim */}
+                  <div className="relative h-44 overflow-hidden bg-stone-900">
+                    <img
+                      src={fac.image}
+                      alt={fac.titleEn}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = GALLERY_DATA[0].image;
+                      }}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
+                    
+                    {/* Floating Icon Badge */}
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-stone-950/85 backdrop-blur-md flex items-center justify-center border border-amber-500/30 shadow-md">
+                      {getFacilityIcon(fac.iconName)}
+                    </div>
+
+                    {/* Expand Badge */}
+                    <div className="absolute top-3 right-3 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 border border-amber-500/30">
+                      <Eye className="w-3 h-3 text-orange-400" />
+                      <span>{t('View Photo', 'عرض الصورة')}</span>
+                    </div>
+                  </div>
+
+                  {/* Body Text */}
+                  <div className="p-5 space-y-2">
+                    <h3 className="font-serif-luxury text-base font-bold text-white group-hover:text-amber-400 transition-colors">
+                      {isArabic ? fac.titleAr : fac.titleEn}
+                    </h3>
+
+                    <p className="text-xs text-stone-400 leading-relaxed">
+                      {isArabic ? fac.descriptionAr : fac.descriptionEn}
+                    </p>
+                  </div>
                 </div>
 
-                <h3 className="font-serif-luxury text-base font-bold text-white">
-                  {isArabic ? fac.titleAr : fac.titleEn}
-                </h3>
-
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  {isArabic ? fac.descriptionAr : fac.descriptionEn}
-                </p>
+                {/* Card Footer Badge */}
+                <div className="px-5 pb-5 pt-0 flex items-center gap-1.5 text-[11px] font-semibold text-amber-400/90">
+                  <CheckCircle className="w-3.5 h-3.5 text-orange-500" />
+                  <span>{t('Complimentary Service', 'خدمة مجانية متميزة')}</span>
+                </div>
               </div>
             ))}
           </div>

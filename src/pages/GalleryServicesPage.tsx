@@ -104,6 +104,9 @@ export const GalleryServicesPage: React.FC<GalleryServicesPageProps> = ({ onOpen
                 <img
                   src={item.image}
                   alt={item.titleEn}
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = GALLERY_DATA[0].image;
+                  }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
@@ -144,22 +147,48 @@ export const GalleryServicesPage: React.FC<GalleryServicesPageProps> = ({ onOpen
             {FACILITIES_DATA.map((service) => (
               <div
                 key={service.id}
-                className="p-6 bg-stone-900 rounded-2xl border border-stone-800 hover:border-amber-500/30 transition-all space-y-3"
+                onClick={() => setLightboxImg({ src: service.image, titleEn: service.titleEn, titleAr: service.titleAr })}
+                className="group cursor-pointer bg-stone-900 rounded-2xl border border-stone-800 hover:border-amber-500/50 overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-orange-600/20 flex items-center justify-center border border-orange-500/30">
-                  {getServiceIcon(service.iconName)}
+                <div>
+                  {/* Photo Header */}
+                  <div className="relative h-44 overflow-hidden bg-stone-900">
+                    <img
+                      src={service.image}
+                      alt={service.titleEn}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = GALLERY_DATA[0].image;
+                      }}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent" />
+
+                    {/* Floating Icon Badge */}
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-stone-950/85 backdrop-blur-md flex items-center justify-center border border-amber-500/30 shadow-md">
+                      {getServiceIcon(service.iconName)}
+                    </div>
+
+                    {/* Expand Badge */}
+                    <div className="absolute top-3 right-3 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 border border-amber-500/30">
+                      <Eye className="w-3 h-3 text-orange-400" />
+                      <span>{t('View Photo', 'عرض الصورة')}</span>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-5 space-y-2">
+                    <h3 className="font-serif-luxury text-base font-bold text-white group-hover:text-amber-400 transition-colors">
+                      {isArabic ? service.titleAr : service.titleEn}
+                    </h3>
+
+                    <p className="text-xs text-stone-400 leading-relaxed">
+                      {isArabic ? service.descriptionAr : service.descriptionEn}
+                    </p>
+                  </div>
                 </div>
 
-                <h3 className="font-serif-luxury text-base font-bold text-white">
-                  {isArabic ? service.titleAr : service.titleEn}
-                </h3>
-
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  {isArabic ? service.descriptionAr : service.descriptionEn}
-                </p>
-
-                <div className="pt-2 flex items-center gap-1.5 text-[11px] text-amber-400">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+                <div className="px-5 pb-5 pt-0 flex items-center gap-1.5 text-[11px] font-semibold text-amber-400">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" />
                   <span>{t('Included for Guests', 'مشمول للنزلاء')}</span>
                 </div>
               </div>

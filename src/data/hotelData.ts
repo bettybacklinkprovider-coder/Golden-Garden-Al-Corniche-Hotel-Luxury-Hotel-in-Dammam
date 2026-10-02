@@ -5,6 +5,10 @@ import grandLobby from '../assets/images/hotel_grand_lobby_1790939672083.jpg';
 import seaViewSuite from '../assets/images/suite_sea_view_1790939689010.jpg';
 import diningRestaurant from '../assets/images/hotel_dining_restaurant_1790939701212.jpg';
 import facilitiesLounge from '../assets/images/hotel_facilities_lounge_1790939713981.jpg';
+import valetParking from '../assets/images/hotel_valet_parking_1790942757883.jpg';
+import wifiAmenity from '../assets/images/hotel_wifi_amenity_1790942774141.jpg';
+import housekeepingImg from '../assets/images/hotel_housekeeping_1790942786555.jpg';
+import fitnessGym from '../assets/images/hotel_fitness_gym_1790942800135.jpg';
 
 export const HOTEL_INFO = {
   name: 'Golden Garden Al Corniche Hotel',
@@ -209,6 +213,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Seamless complimentary fiber Wi-Fi throughout all guest rooms, suites, lobby, and dining areas.',
     descriptionAr: 'تغطية إنترنت واي فاي مجانية فائقة السرعة في جميع الغرف والأجنحة والمرافق.',
     iconName: 'Wifi',
+    image: wifiAmenity,
   },
   {
     id: 'ac',
@@ -217,6 +222,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Whisper-quiet air conditioning units with guest-controlled thermostats in every suite.',
     descriptionAr: 'أنظمة تكييف هواء حديثة وهادئة تتيح لك التحكم الكامل بدرجة الحرارة المناسبة لك.',
     iconName: 'Wind',
+    image: facilitiesLounge,
   },
   {
     id: 'reception',
@@ -225,6 +231,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Multi-lingual hospitality specialists ready to assist with check-in, luggage, and city tours day & night.',
     descriptionAr: 'طاقم مدرب ومرحب على مدار الساعة لمساعدتك في إنهاء إجراءات الدخول والرحلات والخدمات.',
     iconName: 'UserCheck',
+    image: grandLobby,
   },
   {
     id: 'housekeeping',
@@ -233,6 +240,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Meticulous daily room cleaning, evening turn-down, and same-day express laundry & dry cleaning.',
     descriptionAr: 'تنظيف يومي دقيق للغرف والأجنحة مع خدمات الغسيل والكوي السريع في نفس اليوم.',
     iconName: 'Sparkles',
+    image: housekeepingImg,
   },
   {
     id: 'parking',
@@ -241,6 +249,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Secure on-site covered parking lot with 24/7 CCTV surveillance and valet assistance.',
     descriptionAr: 'مواقف سيارات آمنة ومظللة مع حراسة وخدمة إيقاف السيارات للضيوف والنزلاء.',
     iconName: 'Car',
+    image: valetParking,
   },
   {
     id: 'dining',
@@ -249,6 +258,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Exquisite Arabian breakfast, fresh seafood, and international gourmet cuisine served 24/7.',
     descriptionAr: 'أشهى المأكولات الشرقية والعالمية والمأكولات البحرية مع إمكانية الطلب للغرفة على مدار الساعة.',
     iconName: 'Utensils',
+    image: diningRestaurant,
   },
   {
     id: 'lounge',
@@ -257,6 +267,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Quiet workstation environment with printing, high-speed wired access, and complimentary Arabic coffee & dates.',
     descriptionAr: 'مساحة عمل هادئة مزودة بأجهزة حديثة وطباعة مع تقديم القهوة العربية الأصيلة والتمور.',
     iconName: 'Briefcase',
+    image: facilitiesLounge,
   },
   {
     id: 'fitness',
@@ -265,6 +276,7 @@ export const FACILITIES_DATA: Facility[] = [
     descriptionEn: 'Modern exercise equipment, sauna room, and relaxation area for hotel guests.',
     descriptionAr: 'أجهزة رياضية حديثة، غرفة سونا، ومساحة استرخاء مخصصة لنزلاء الفندق.',
     iconName: 'Dumbbell',
+    image: fitnessGym,
   },
 ];
 

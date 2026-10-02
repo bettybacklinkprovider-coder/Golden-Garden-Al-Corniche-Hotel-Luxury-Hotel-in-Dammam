@@ -27,6 +27,7 @@ export interface Facility {
   descriptionEn: string;
   descriptionAr: string;
   iconName: string;
+  image: string;
 }
 
 export interface GalleryItem {
